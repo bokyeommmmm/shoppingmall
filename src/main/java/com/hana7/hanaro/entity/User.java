@@ -1,6 +1,10 @@
 package com.hana7.hanaro.entity;
 
 
+import org.hibernate.annotations.ColumnDefault;
+
+import com.hana7.hanaro.enums.USERROLE;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,11 +37,12 @@ public class User extends BaseEntity{
 	@Column(name="email",length = 30,nullable = false)
 	private String email;
 
-	@Column(name="password",length = 50,nullable = false)
+	@Column(name="password",length = 60,nullable = false)
 	private String password;
 
 	@Column(name="role",nullable = false)
 	@Enumerated(EnumType.STRING)
+	@ColumnDefault("'ROLE_USER'")
 	private USERROLE role = USERROLE.ROLE_USER;
 
 	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL)

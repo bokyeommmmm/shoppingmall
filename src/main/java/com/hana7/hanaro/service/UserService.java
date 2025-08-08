@@ -39,6 +39,14 @@ public class UserService {
 		return users.map(UserService::toDto);
 	}
 
+	public void deleteUserById(long id) throws NotFoundException {
+		User user = userRepository.findById(id).orElse(null);
+		if(user == null){
+			throw  new NotFoundException("그런사람 이미 없습니다.");
+		}
+		userRepository.delete(user);
+	}
+
 	private static UserResponseDTO toDto(User user){
 		return UserResponseDTO.builder()
 			.id(user.getId())

@@ -1926,3 +1926,205 @@ This generated password is for development use only. Your security configuration
 2025-08-08 17:47:35 [HikariPool-39:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-39 - Thread starvation or clock leap detected (housekeeper delta=49s310ms).
 2025-08-08 17:48:32 [HikariPool-39:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-39 - Thread starvation or clock leap detected (housekeeper delta=56s910ms).
 2025-08-08 17:54:00 [HikariPool-39:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-39 - Thread starvation or clock leap detected (housekeeper delta=4m21s678ms).
+2025-08-08 18:04:22 [Thread-155] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Shutdown initiated...
+2025-08-08 18:04:22 [Thread-155] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-39 - Shutdown completed.
+2025-08-08 18:04:23 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:04:23 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:04:23 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:04:23 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:04:23 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:04:23 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:04:23 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:04:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Starting...
+2025-08-08 18:04:23 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-40 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7688456c
+2025-08-08 18:04:23 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Start completed.
+2025-08-08 18:04:24 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:04:24 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: f52edb21-8467-44b5-978d-962b4e49caa9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:04:24 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 1.236 seconds (process running for 19956.51)
+2025-08-08 18:06:53 [Thread-159] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Shutdown initiated...
+2025-08-08 18:06:53 [Thread-159] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-40 - Shutdown completed.
+2025-08-08 18:06:53 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:06:53 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:06:53 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:06:54 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:06:54 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:06:54 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:06:54 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:06:54 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Starting...
+2025-08-08 18:06:54 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-41 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68ab87bf
+2025-08-08 18:06:54 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Start completed.
+2025-08-08 18:06:54 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:06:54 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: cd9d1bf6-8c5b-445e-9fe5-996580d46044
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:06:54 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 1.181 seconds (process running for 20107.26)
+2025-08-08 18:06:59 [Thread-163] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Shutdown initiated...
+2025-08-08 18:06:59 [Thread-163] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-41 - Shutdown completed.
+2025-08-08 18:06:59 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:06:59 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:06:59 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:06:59 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:06:59 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:06:59 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:06:59 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:06:59 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Starting...
+2025-08-08 18:06:59 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-42 - Added connection com.mysql.cj.jdbc.ConnectionImpl@32d1fe2a
+2025-08-08 18:06:59 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Start completed.
+2025-08-08 18:07:00 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:07:00 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 46dda686-c997-4638-bc92-07b9a3858384
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:07:00 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.779 seconds (process running for 20112.607)
+2025-08-08 18:07:20 [Thread-167] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Shutdown initiated...
+2025-08-08 18:07:20 [Thread-167] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-42 - Shutdown completed.
+2025-08-08 18:07:21 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:07:21 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:07:21 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:07:21 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:07:21 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:07:21 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:07:21 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:07:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Starting...
+2025-08-08 18:07:21 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-43 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73b1283a
+2025-08-08 18:07:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Start completed.
+2025-08-08 18:07:21 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:07:22 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c87c651b-00d9-4d4d-b7c3-a1e430e4fc17
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:07:22 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.975 seconds (process running for 20134.35)
+2025-08-08 18:07:31 [Thread-171] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Shutdown initiated...
+2025-08-08 18:07:31 [Thread-171] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-43 - Shutdown completed.
+2025-08-08 18:07:31 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:07:31 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:07:31 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:07:31 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:07:31 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:07:31 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:07:31 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:07:31 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-44 - Starting...
+2025-08-08 18:07:31 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-44 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a5e89b5
+2025-08-08 18:07:31 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-44 - Start completed.
+2025-08-08 18:07:32 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:07:32 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 19f4989b-9227-498f-928c-e64cbde1a1ee
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:07:32 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.814 seconds (process running for 20144.819)
+2025-08-08 18:07:57 [Thread-175] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-44 - Shutdown initiated...
+2025-08-08 18:07:57 [Thread-175] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-44 - Shutdown completed.
+2025-08-08 18:07:57 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:07:57 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:07:57 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:07:57 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:07:57 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:07:57 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:07:57 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:07:57 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-45 - Starting...
+2025-08-08 18:07:57 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-45 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5eb270ad
+2025-08-08 18:07:57 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-45 - Start completed.
+2025-08-08 18:07:58 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:07:58 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 72384541-7a05-490c-a4f8-aba7dcdcdbb4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:07:58 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.764 seconds (process running for 20170.419)
+2025-08-08 18:08:03 [Thread-179] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-45 - Shutdown initiated...
+2025-08-08 18:08:03 [Thread-179] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-45 - Shutdown completed.
+2025-08-08 18:08:03 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:08:03 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:08:03 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:08:03 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:08:03 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:08:03 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:08:03 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:08:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-46 - Starting...
+2025-08-08 18:08:03 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-46 - Added connection com.mysql.cj.jdbc.ConnectionImpl@666d3021
+2025-08-08 18:08:03 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-46 - Start completed.
+2025-08-08 18:08:04 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:08:04 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c2e3fe3b-39aa-4587-9399-17b42c05e2c2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:08:04 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.797 seconds (process running for 20176.817)
+2025-08-08 18:14:08 [Thread-183] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-46 - Shutdown initiated...
+2025-08-08 18:14:08 [Thread-183] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-46 - Shutdown completed.
+2025-08-08 18:14:08 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:14:08 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:14:08 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:14:09 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:14:09 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:14:09 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:14:09 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:14:09 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Starting...
+2025-08-08 18:14:09 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-47 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e477c5b
+2025-08-08 18:14:09 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Start completed.
+2025-08-08 18:14:09 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:14:09 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: fb7e0321-cb33-4c14-a2cd-c4cadc07212b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:14:09 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.778 seconds (process running for 20542.009)
+2025-08-08 18:17:49 [Thread-187] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Shutdown initiated...
+2025-08-08 18:17:49 [Thread-187] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-47 - Shutdown completed.
+2025-08-08 18:17:49 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:17:49 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:17:49 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:17:49 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:17:49 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:17:49 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:17:49 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:17:49 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-48 - Starting...
+2025-08-08 18:17:50 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-48 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ddd791b
+2025-08-08 18:17:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-48 - Start completed.
+2025-08-08 18:17:50 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:17:50 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 6048bfc7-bbc6-405c-a54e-a639a04ed385
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:17:50 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 1.215 seconds (process running for 20762.985)
+2025-08-08 18:18:21 [Thread-191] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-48 - Shutdown initiated...
+2025-08-08 18:18:21 [Thread-191] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-48 - Shutdown completed.
+2025-08-08 18:18:21 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Starting HanaroApplication using Java 21.0.7 with PID 16561 (/Users/kyeommm/workspace/project_2/hanaro/build/classes/java/main started by kyeommm in /Users/kyeommm/workspace/project_2/hanaro)
+2025-08-08 18:18:21 [restartedMain] DEBUG com.hana7.hanaro.HanaroApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-08 18:18:21 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 18:18:21 [restartedMain] WARN  o.m.s.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.hana7.hanaro]' package. Please check your configuration.
+2025-08-08 18:18:21 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-08 18:18:21 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-08 18:18:21 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-08 18:18:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-49 - Starting...
+2025-08-08 18:18:21 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-49 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1357b8b7
+2025-08-08 18:18:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-49 - Start completed.
+2025-08-08 18:18:21 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-08 18:18:22 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 49db567e-e3e1-45ce-a63e-bfb460424d49
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-08 18:18:22 [restartedMain] INFO  com.hana7.hanaro.HanaroApplication - Started HanaroApplication in 0.448 seconds (process running for 20794.434)
+2025-08-08 18:18:23 [Thread-195] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-49 - Shutdown initiated...
+2025-08-08 18:18:23 [Thread-195] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-49 - Shutdown completed.

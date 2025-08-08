@@ -2,6 +2,8 @@ package com.hana7.hanaro.entity;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.hana7.hanaro.enums.ORDERSTATUS;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -36,7 +38,8 @@ public class Orders extends BaseEntity{
 
 	@Column(name = "status",nullable = false)
 	@Enumerated(EnumType.STRING)
-	private ORDERSTATUS status=ORDERSTATUS.PAID;
+	@ColumnDefault("'PAID'")
+	private ORDERSTATUS status= ORDERSTATUS.PAID;
 
 	@Column(name = "totalPrice", nullable = false)
 	@ColumnDefault("0")
