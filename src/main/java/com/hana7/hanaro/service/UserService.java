@@ -20,16 +20,14 @@ public class UserService {
 	private final UserRepository userRepository;
 	private final UserCustomRepositoryImpl userCustomRepository;
 
-	public List<UserResponseDTO> getUsers(){
+	public Page<UserResponseDTO> getUsers(Pageable pageable) {
 
-		List<User> users = userRepository.findAll();
-		if(users.isEmpty()){
+		Page<User> users = userRepository.findAll(pageable);
+		if (users.isEmpty()) {
 			throw new NotFoundException("저장 된 회원이 없습니다!!!!!");
 		}
 
-		return users.stream()
-			.map(UserService::toDto)
-			.toList();
+		return users.map(UserService::toDto);
 	}
 	public Page<UserResponseDTO> findUserByKeyword(String keyword, Pageable pageable) throws NotFoundException {
 		Page<User> users = userCustomRepository.findByNameAndEmail(keyword, pageable);

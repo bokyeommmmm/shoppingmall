@@ -32,7 +32,7 @@ public class Item extends BaseEntity {
 	private Long id;
 
 	@Column(nullable = false, length = 30, name = "itemName")
-	private String name;
+	private String itemName;
 
 	@Column(nullable = false, name = "price")
 	private int price;
