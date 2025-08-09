@@ -1,7 +1,7 @@
 package com.hana7.hanaro.controller;
 
 import com.hana7.hanaro.dto.UserResponseDTO;
-import com.hana7.hanaro.exception.NotFoundException;
+import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 import org.springdoc.core.annotations.ParameterObject;
@@ -19,11 +18,10 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -50,7 +48,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteUser(@RequestParam Long id) throws NotFoundException {
+    public ResponseEntity<Boolean> deleteUser(@PathVariable Long id) throws NotFoundException {
         userService.deleteUserById(id);
         return ResponseEntity.ok().build();
     }

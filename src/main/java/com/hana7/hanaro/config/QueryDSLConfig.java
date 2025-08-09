@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class QueryDSLConfig {
+public class QueryDSLConfig {
 
 	@PersistenceContext
 	private EntityManager entityManager;

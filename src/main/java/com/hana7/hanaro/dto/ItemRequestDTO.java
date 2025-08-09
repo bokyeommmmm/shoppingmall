@@ -6,9 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hana7.hanaro.entity.Item;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,7 +17,7 @@ import lombok.Data;
 public class ItemRequestDTO {
 
 	@NotBlank
-	@Max(30)
+	@Size(max=30)
 	private String itemName;
 
 	@NotNull

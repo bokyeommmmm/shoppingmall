@@ -1,14 +1,23 @@
 package com.hana7.hanaro.service;
 
 import com.hana7.hanaro.dto.ItemRequestDTO;
+import com.hana7.hanaro.dto.ItemResponseDTO;
 import com.hana7.hanaro.entity.Item;
 import com.hana7.hanaro.entity.ItemImage;
+import com.hana7.hanaro.exception.BadRequest.ItemDeleteBadRequestException;
+import com.hana7.hanaro.exception.NotFound.ItemNotFoundException;
+import com.hana7.hanaro.exception.NotFound.NotFoundException;
+import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
 import com.hana7.hanaro.repository.ItemImageRepository;
 import com.hana7.hanaro.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
-import net.coobird.thumbnailator.Thumbnailator;
+
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -23,6 +32,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor //파이널에선 항상 .
+@Transactional
 public class ItemService {
 	private final ItemRepository itemRepository;
 	private final ItemImageRepository itemImageRepository;
@@ -34,6 +44,45 @@ public class ItemService {
 		Item item = itemRepository.save(itemRequestDTO.toEntity());
 
 		saveFiles(itemRequestDTO.getImages(),item);
+	}
+	public Page<ItemResponseDTO> findItem(String keyword, Pageable pageable) {
+		Page<Item>items = itemRepository.findByItemNameContainsIgnoreCase(keyword, pageable);
+
+		return items.map(ItemService::toDto);
+
+	}
+	public void updateItem (Long itemId, ItemRequestDTO itemRequestDTO) {
+		Item item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
+
+		itemRepository.save(modifyItem(item, itemRequestDTO));
+	}
+	public void deleteItem (Long itemId) {
+		if(!itemRepository.existsById(itemId)) {
+			throw new UserNotFoundException();
+		}
+		try {
+			itemRepository.deleteById(itemId);
+		} catch(Exception e) {
+			throw new ItemDeleteBadRequestException();
+		}
+	}
+	private Item modifyItem(Item item, ItemRequestDTO itemRequestDTO) {
+		saveFiles(itemRequestDTO.getImages(),item);
+
+		return item.toBuilder()
+			.itemName(itemRequestDTO.getItemName())
+			.price(itemRequestDTO.getPrice())
+			.quantity(itemRequestDTO.getQuantity())
+			.build();
+	}
+
+	private static ItemResponseDTO toDto(Item items) {
+		return ItemResponseDTO.builder()
+			.id(items.getId())
+			.itemName(items.getItemName())
+			.price(items.getPrice())
+			.quantity(items.getQuantity())
+			.build();
 	}
 
 	private void saveFiles(List<MultipartFile> files, Item item) {
@@ -70,7 +119,10 @@ public class ItemService {
 				}
 			});
 
-			itemImageRepository.saveAll(itemImages);
+			List<ItemImage> saved = itemImageRepository.saveAll(itemImages);
+
+			item.getImages().addAll(saved);
+			itemRepository.save(item);
 		}
 	}
 	private String getTodayPath() {

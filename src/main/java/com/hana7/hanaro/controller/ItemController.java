@@ -1,12 +1,25 @@
 package com.hana7.hanaro.controller;
 
+import org.apache.coyote.BadRequestException;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hana7.hanaro.dto.ItemRequestDTO;
+import com.hana7.hanaro.dto.ItemResponseDTO;
+import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.repository.ItemRepository;
 import com.hana7.hanaro.service.ItemService;
 
@@ -20,10 +33,28 @@ public class ItemController {
 	private final ItemService itemService;
 
 	@PostMapping(value="",consumes= MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<?> insertItem(ItemRequestDTO itemRequestDTO) {
+	public ResponseEntity<?> insertItem(@Validated ItemRequestDTO itemRequestDTO) {
 		itemService.insertItem(itemRequestDTO);
 
 		return ResponseEntity.ok().build();
+	}
+
+	@GetMapping("/search")
+	public ResponseEntity<Page<ItemResponseDTO>>searchItem(@RequestParam("keyword") String keyword,
+	@ParameterObject @PageableDefault(size = 10, page = 0, sort = "itemName") Pageable pageable) {
+		return ResponseEntity.ok(itemService.findItem(keyword,pageable));
+	}
+
+	@PatchMapping("/{id}")
+	public ResponseEntity<?> updateItem(@PathVariable Long id ,@Validated ItemRequestDTO itemRequestDTO) {
+		itemService.updateItem(id, itemRequestDTO);
+		return ResponseEntity.ok().build();
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> deleteItem(@PathVariable Long id) throws NotFoundException, BadRequestException {
+	itemService.deleteItem(id);
+		return ResponseEntity.ok().build();
+
 	}
 
 }

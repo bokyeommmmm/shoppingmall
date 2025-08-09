@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,8 +42,16 @@ public class Item extends BaseEntity {
 	private int quantity;
 
 	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+	@Builder.Default
 	@ToString.Exclude //tostring loop 방지.
 	private List<ItemImage> images = new ArrayList<>();
+
+	public  List<ItemImage> getImages() {
+		if(images == null){
+			images = new ArrayList<>();
+		}
+		return images;
+	}
 
 
 }
