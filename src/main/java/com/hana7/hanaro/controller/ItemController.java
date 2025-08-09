@@ -23,6 +23,7 @@ import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.repository.ItemRepository;
 import com.hana7.hanaro.service.ItemService;
 
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -45,7 +46,7 @@ public class ItemController {
 		return ResponseEntity.ok(itemService.findItem(keyword,pageable));
 	}
 
-	@PatchMapping("/{id}")
+	@PatchMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> updateItem(@PathVariable Long id ,@Validated ItemRequestDTO itemRequestDTO) {
 		itemService.updateItem(id, itemRequestDTO);
 		return ResponseEntity.ok().build();
@@ -57,4 +58,12 @@ public class ItemController {
 
 	}
 
+	@PatchMapping(value = "{id}/quantity")
+	public ResponseEntity<?> updateItemQuantity(
+		@PathVariable Long id,
+		@RequestParam @Min(0) int quantity
+	) {
+		itemService.modifyItemQuantity(id, quantity);
+		return ResponseEntity.ok().build();
+	}
 }

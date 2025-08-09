@@ -75,8 +75,14 @@ public class ItemService {
 			.quantity(itemRequestDTO.getQuantity())
 			.build();
 	}
+	public void modifyItemQuantity(Long itemId, int quantity) {
+		Item item = itemRepository.findById(itemId)
+			.orElseThrow(ItemNotFoundException::new);
 
-	private static ItemResponseDTO toDto(Item items) {
+		item.setQuantity(quantity);
+	}
+
+		private static ItemResponseDTO toDto(Item items) {
 		return ItemResponseDTO.builder()
 			.id(items.getId())
 			.itemName(items.getItemName())
