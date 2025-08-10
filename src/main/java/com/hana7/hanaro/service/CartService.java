@@ -1,18 +1,17 @@
 package com.hana7.hanaro.service;
 
+import com.hana7.hanaro.exception.NotFound.CartItemNotFoundException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hana7.hanaro.dto.CartItemRequestDTO;
 import com.hana7.hanaro.dto.CartRequestDTO;
 import com.hana7.hanaro.entity.Cart;
 import com.hana7.hanaro.entity.CartItem;
 import com.hana7.hanaro.entity.Item;
 import com.hana7.hanaro.entity.User;
 import com.hana7.hanaro.exception.BadRequest.CartBadRequestException;
-import com.hana7.hanaro.exception.NotFound.CartNotFoundException;
 import com.hana7.hanaro.exception.NotFound.ItemNotFoundException;
 import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
 import com.hana7.hanaro.repository.CartItemRepository;
@@ -60,23 +59,16 @@ public class CartService {
 		cartItemRepository.saveAll(cartItems);
 	}
 
-	//수정
-	public void updateCart(CartRequestDTO cartRequestDTO) {
-		//user cart 있는지 확인
+	public void updateCartItemAmount(Long cartItemId, int amount) {
+		CartItem cartItem = cartItemRepository.findById(cartItemId).orElseThrow(CartItemNotFoundException::new);
+		cartItem.setAmount(amount);
+		cartItemRepository.save(cartItem);
+	}
 
-		User user = userRepository.findById(cartRequestDTO.getUserId()).orElseThrow(UserNotFoundException::new);
-		Cart cart = cartRepository.findByUser(user).orElseThrow(CartNotFoundException::new);
-
-		List<CartItem> cartItems = cartItemRepository.findByCart(cart);
-
-		// if(cartItems.isEmpty()) {
-		// 	throw new CartItem
-		// }
-
-		List<Long> itemIds = cartRequestDTO.getCartItems().stream().map(CartItemRequestDTO::getItemId).toList();
-
-		cartItems.stream().map(cartItem ->{
-			cartItem.getItem().getId()
-		})
+	public void deleteCartItem(Long cartItemId) {
+		if (!cartItemRepository.existsById(cartItemId)) {
+			throw new CartItemNotFoundException();
+		}
+		cartItemRepository.deleteById(cartItemId);
 	}
 }
