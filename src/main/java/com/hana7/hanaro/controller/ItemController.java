@@ -1,5 +1,8 @@
 package com.hana7.hanaro.controller;
 
+import com.hana7.hanaro.dto.ItemDetailResponseDTO;
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.stream.Collectors;
 import org.apache.coyote.BadRequestException;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
@@ -44,6 +47,18 @@ public class ItemController {
 	public ResponseEntity<Page<ItemResponseDTO>>searchItem(@RequestParam("keyword") String keyword,
 	@ParameterObject @PageableDefault(size = 10, page = 0, sort = "itemName") Pageable pageable) {
 		return ResponseEntity.ok(itemService.findItem(keyword,pageable));
+	}
+
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<ItemDetailResponseDTO> getItemDetail(@PathVariable Long id, HttpServletRequest request) {
+		ItemDetailResponseDTO itemDetail = itemService.findItemDetailById(id);
+		String baseUrl = String.format("%s://%s:%d", request.getScheme(), request.getServerName(), request.getServerPort());
+		itemDetail.setImageUrls(
+			itemDetail.getImageUrls().stream()
+				.map(url -> baseUrl + url)
+				.collect(Collectors.toList())
+		);
+		return ResponseEntity.ok(itemDetail);
 	}
 
 	@PatchMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

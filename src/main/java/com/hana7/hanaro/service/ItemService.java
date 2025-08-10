@@ -1,5 +1,6 @@
 package com.hana7.hanaro.service;
 
+import com.hana7.hanaro.dto.ItemDetailResponseDTO;
 import com.hana7.hanaro.dto.ItemRequestDTO;
 import com.hana7.hanaro.dto.ItemResponseDTO;
 import com.hana7.hanaro.entity.Item;
@@ -10,6 +11,7 @@ import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
 import com.hana7.hanaro.repository.ItemImageRepository;
 import com.hana7.hanaro.repository.ItemRepository;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.coyote.BadRequestException;
@@ -51,6 +53,12 @@ public class ItemService {
 		return items.map(ItemService::toDto);
 
 	}
+
+	public ItemDetailResponseDTO findItemDetailById(Long id) {
+		Item item = itemRepository.findById(id).orElseThrow(ItemNotFoundException::new);
+		return toDetailDto(item);
+	}
+
 	public void updateItem (Long itemId, ItemRequestDTO itemRequestDTO) {
 		Item item = itemRepository.findById(itemId).orElseThrow(ItemNotFoundException::new);
 
@@ -88,6 +96,17 @@ public class ItemService {
 			.itemName(items.getItemName())
 			.price(items.getPrice())
 			.quantity(items.getQuantity())
+			.build();
+	}
+
+	private ItemDetailResponseDTO toDetailDto(Item item) {
+		return ItemDetailResponseDTO.builder()
+			.id(item.getId())
+			.itemName(item.getItemName())
+			.price(item.getPrice())
+			.imageUrls(item.getImages().stream()
+				.map(image -> "/upload/" + image.getSaveDir() + "/" + image.getSaveName())
+				.collect(Collectors.toList()))
 			.build();
 	}
 
