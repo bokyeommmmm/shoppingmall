@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hana7.hanaro.service.OrdersService;
@@ -20,7 +21,7 @@ import com.hana7.hanaro.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/orders")
 @RequiredArgsConstructor
 public class OrdersController {
 	private final OrdersService ordersService;
@@ -45,5 +46,23 @@ public class OrdersController {
 			Authentication authentication){
 		return ResponseEntity.ok(ordersService.getMyOrders(authentication.getName(), pageable));
 	}
+
+	@GetMapping("/date")
+	public ResponseEntity<Page<OrderResponseDTO>> getOrdersByDate(
+		@ParameterObject @PageableDefault(size=10,page=0) Pageable pageable,
+		@RequestParam String start, @RequestParam String end){
+
+		return ResponseEntity.ok(ordersService.getOrdersByDate(start, end, pageable));
+
+	}
+	@GetMapping("/user")
+	public ResponseEntity<Page<OrderResponseDTO>> getOrdersUser(
+		@ParameterObject @PageableDefault(size=10,page=0) Pageable pageable,
+		@RequestParam String userName){
+
+		return ResponseEntity.ok(ordersService.getOrdersByUser(userName, pageable));
+
+	}
+
 
 }

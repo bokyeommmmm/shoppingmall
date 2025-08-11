@@ -1,5 +1,7 @@
 package com.hana7.hanaro.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +11,10 @@ import com.hana7.hanaro.dto.OrderResponseDTO;
 import com.hana7.hanaro.entity.Item;
 import com.hana7.hanaro.exception.BadRequest.OrderBadRequestException;
 import com.hana7.hanaro.exception.NotFound.ItemNotFoundException;
+import com.hana7.hanaro.exception.NotFound.OrderNotFoundException;
 import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
+
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -102,6 +107,31 @@ public class OrdersService {
 		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
 
 		return orders.map(this::toDto);
+	}
+
+	//주문내역 조회 (관리자 기능)
+	public Page<OrderResponseDTO> getOrdersByDate(String start, String end, Pageable pageable){
+		LocalDateTime startDateTime = LocalDate.parse(start,DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay();
+		LocalDateTime endDateTime = LocalDate.parse(end,DateTimeFormatter.ISO_LOCAL_DATE).atTime(23,59,59);
+		Page<Orders> orders = ordersRepository.findByCreatedAtBetween(startDateTime, endDateTime, pageable);
+
+		if(orders.getTotalElements()==0){
+			throw new OrderNotFoundException();
+		}
+
+		return orders.map(this::toDto);
+
+	}
+	public Page<OrderResponseDTO> getOrdersByUser(String userName, Pageable pageable){
+		User user = userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
+		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
+
+		if(orders.getTotalElements()==0){
+			throw new OrderNotFoundException();
+		}
+
+		return orders.map(this::toDto);
+
 	}
 	private OrderResponseDTO toDto(Orders order){
 		//주문에 담긴 주문 상품 정보 가져옴

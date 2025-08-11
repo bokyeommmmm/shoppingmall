@@ -8,7 +8,7 @@ VALUES ('1000', '10', '소주'),
 
 
 INSERT INTO Cart (`user`)
-VALUES ('1');
+VALUES ('2');
 
 INSERT INTO CartItem (`cart`, `item`, `amount`)
 VALUES ('1', '1', 2),
