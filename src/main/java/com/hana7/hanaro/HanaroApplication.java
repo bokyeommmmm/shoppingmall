@@ -2,8 +2,10 @@ package com.hana7.hanaro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class HanaroApplication {
 
 	public static void main(String[] args) {

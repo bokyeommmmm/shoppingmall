@@ -12,4 +12,11 @@ VALUES ('2');
 
 INSERT INTO CartItem (`cart`, `item`, `amount`)
 VALUES ('1', '1', 2),
-       ('1', '2', 2);
+       ('1', '2', 3);
+
+INSERT INTO orders (`user_id`)
+VALUES ( '2');
+
+INSERT INTO `orderItem` (`amount`, `id`, `order_id`)
+VALUES ('2', '1', '1'),
+       ('3','2','1');
