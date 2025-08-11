@@ -13,6 +13,7 @@ import com.hana7.hanaro.repository.ItemImageRepository;
 import com.hana7.hanaro.repository.ItemRepository;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,8 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor //파이널에선 항상 .
 @Transactional
+@Log4j2
+
 public class ItemService {
 	private final ItemRepository itemRepository;
 	private final ItemImageRepository itemImageRepository;

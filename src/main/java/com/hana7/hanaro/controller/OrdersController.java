@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hana7.hanaro.service.OrdersService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/orders")
 @RequiredArgsConstructor
+@Log4j2
+
 public class OrdersController {
 	private final OrdersService ordersService;
 

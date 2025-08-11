@@ -28,10 +28,12 @@ import com.hana7.hanaro.service.ItemService;
 
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/items")
 @RequiredArgsConstructor
+@Log4j2
 public class ItemController {
 	private final ItemRepository itemRepository;
 	private final ItemService itemService;

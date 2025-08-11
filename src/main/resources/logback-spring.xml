@@ -48,12 +48,22 @@
     </appender>
 
     <!-- 패키지별 Logger 설정 -->
-    <logger name="com.hanaro.item" level="INFO" additivity="false">
+    <logger name="com.hana7.hanaro.controller.ItemController" level="INFO" additivity="false">
         <appender-ref ref="PRODUCT_FILE"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
 
-    <logger name="com.hana7.springdemo.jpa.service" level="INFO" additivity="false">
+    <logger name="com.hana7.hanaro.service.ItemService" level="INFO" additivity="false">
+        <appender-ref ref="PRODUCT_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <logger name="com.hana7.hanaro.controller.OrdersController" level="INFO" additivity="false">
+        <appender-ref ref="ORDER_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <logger name="com.hana7.hanaro.service.OrdersService" level="INFO" additivity="false">
         <appender-ref ref="ORDER_FILE"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
@@ -64,3 +74,4 @@
         <appender-ref ref="CONSOLE"/>
     </root>
 </configuration>
+<!--아이템컨트롤러 오더컨트롤러 아이템서비스 오더 서비스-->

@@ -39,10 +39,12 @@ import com.hana7.hanaro.repository.OrdersRepository;
 import com.hana7.hanaro.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @Service
 @RequiredArgsConstructor //파이널에선 항상 .
 @Transactional
+@Log4j2
 public class OrdersService {
 	private final OrdersRepository ordersRepository;
 	private final OrdersCustomRepository ordersCustomRepository;
