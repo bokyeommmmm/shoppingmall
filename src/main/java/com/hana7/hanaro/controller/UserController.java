@@ -5,6 +5,7 @@ import java.util.Map;
 import com.hana7.hanaro.auth.JwtUtil;
 import com.hana7.hanaro.dto.UserLoginRequestDTO;
 import com.hana7.hanaro.dto.UserLoginResponseDTO;
+import com.hana7.hanaro.dto.UserRequestDTO;
 import com.hana7.hanaro.dto.UserResponseDTO;
 import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.service.UserService;
@@ -88,5 +89,10 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid!");
         }
 
+    }
+    @PostMapping("/signUp")
+    public ResponseEntity<?> signUp(@Valid @RequestBody UserRequestDTO userRequestDTO){
+        userService.signUp(userRequestDTO);
+        return ResponseEntity.ok().build();
     }
 }
