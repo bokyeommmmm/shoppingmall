@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 
 import com.hana7.hanaro.dto.OrderItemResponseDTO;
 import com.hana7.hanaro.dto.OrderResponseDTO;
+import com.hana7.hanaro.entity.Item;
 import com.hana7.hanaro.exception.BadRequest.OrderBadRequestException;
+import com.hana7.hanaro.exception.NotFound.ItemNotFoundException;
 import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,7 @@ import com.hana7.hanaro.entity.Orders;
 import com.hana7.hanaro.entity.User;
 import com.hana7.hanaro.enums.ORDERSTATUS;
 import com.hana7.hanaro.repository.CartItemRepository;
+import com.hana7.hanaro.repository.ItemRepository;
 import com.hana7.hanaro.repository.OrderItemRepository;
 import com.hana7.hanaro.repository.OrdersRepository;
 import com.hana7.hanaro.repository.UserRepository;
@@ -34,6 +37,7 @@ public class OrdersService {
 	private final UserRepository userRepository;
 	private final CartItemRepository cartItemRepository;
 	private final OrderItemRepository orderItemRepository;
+	private final ItemRepository itemRepository;
 
 	@Transactional
 	public void makeOrders(Long userId) {
@@ -63,17 +67,25 @@ public class OrdersService {
 
 		Orders saved = ordersRepository.save(order);
 
+
+
 		List<OrderItem> orderItems = items.stream()
-			.map(cartItem -> OrderItem.builder()
+			.map(cartItem -> {
+				Item item = itemRepository.findById(cartItem.getItem().getId()).orElseThrow(ItemNotFoundException::new);
+				Item updated = item.toBuilder().quantity(item.getQuantity()-cartItem.getAmount()).build();
+				itemRepository.save(updated);
+
+				return OrderItem.builder()
 				.order(saved)
 				.item(cartItem.getItem())
 				.amount(cartItem.getAmount())
-				.build())
+				.build();
+			})
 			.collect(Collectors.toList());
 
 		orderItemRepository.saveAll(orderItems);
 
-		// 주문이 완료되었으므로 장바구니의 상품들을 비웁니다.
+		// 주문이 완료-> 장바구니의 상품들을 비움
 		cartItemRepository.deleteAll(items);
 	}
 
