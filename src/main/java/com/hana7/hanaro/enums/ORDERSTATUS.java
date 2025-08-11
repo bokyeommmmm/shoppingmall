@@ -1,5 +1,8 @@
 package com.hana7.hanaro.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ORDERSTATUS {
 	PAID("결제 완료"),
 	PREPARING("배송 준비"),

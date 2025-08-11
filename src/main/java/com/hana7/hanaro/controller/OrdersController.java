@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,13 @@ public class OrdersController {
 		@ParameterObject @PageableDefault(size = 10, sort = "createdAt") Pageable pageable) {
 		Page<OrderResponseDTO> orderHistory = ordersService.getOrderHistory(userId, pageable);
 		return ResponseEntity.ok(orderHistory);
+	}
+
+	@GetMapping("")
+	public ResponseEntity<Page<OrderResponseDTO>> getMyOrders(
+		@ParameterObject @PageableDefault(size=10,page=0) Pageable pageable,
+			Authentication authentication){
+		return ResponseEntity.ok(ordersService.getMyOrders(authentication.getName(), pageable));
 	}
 
 }

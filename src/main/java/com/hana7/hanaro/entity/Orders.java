@@ -40,10 +40,10 @@ public class Orders extends BaseEntity{
 	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_Orders_User"))
 	private User user;
 
-	@Column(name = "status",nullable = false)
+	@Column(name = "orderStatus",nullable = false)
 	@Enumerated(EnumType.STRING)
 	@ColumnDefault("'PAID'")
-	private ORDERSTATUS status= ORDERSTATUS.PAID;
+	private ORDERSTATUS orderStatus= ORDERSTATUS.PAID;
 
 	@Column(name = "totalPrice", nullable = false)
 	@ColumnDefault("0")
@@ -51,4 +51,5 @@ public class Orders extends BaseEntity{
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<OrderItem> orderItems = new ArrayList<>();
+
 }

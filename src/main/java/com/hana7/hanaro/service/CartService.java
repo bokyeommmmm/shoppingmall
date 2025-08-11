@@ -1,6 +1,11 @@
 package com.hana7.hanaro.service;
 
+import com.hana7.hanaro.dto.CartItemResponseDTO;
+import com.hana7.hanaro.dto.CartResponseDTO;
+import com.hana7.hanaro.dto.ItemDetailResponseDTO;
 import com.hana7.hanaro.exception.NotFound.CartItemNotFoundException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -70,5 +75,36 @@ public class CartService {
 			throw new CartItemNotFoundException();
 		}
 		cartItemRepository.deleteById(cartItemId);
+	}
+
+	public CartResponseDTO getCart(String email){
+		User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
+
+		Cart cart = cartRepository.findByUser(user).orElse(null);
+
+		if(cart==null){
+			Cart newCart = Cart.builder()
+				.user(user)
+				.build();
+			newCart = cartRepository.save(newCart);
+
+			return toDto(newCart,new ArrayList<>());
+		}
+
+		List<CartItem> items = cartItemRepository.findByCart(cart);
+
+		return toDto(cart,items);
+	}
+	private CartResponseDTO toDto(Cart cart, List<CartItem> items){
+		List<CartItemResponseDTO> cartItems = items.stream().map((item) -> CartItemResponseDTO.builder()
+			.id(item.getItem().getId())
+			.itemName(item.getItem().getItemName())
+			.amount(item.getAmount())
+			.build()).toList();
+
+		return CartResponseDTO.builder()
+			.id(cart.getId())
+			.items(cartItems)
+			.build();
 	}
 }

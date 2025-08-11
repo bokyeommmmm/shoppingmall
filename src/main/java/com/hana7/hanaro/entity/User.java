@@ -31,13 +31,13 @@ public class User extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="userName",length = 30,nullable = false)
+	@Column(name="userName",length = 30,nullable = false,unique = true)
 	private String userName;
 
-	@Column(name="email",length = 30,nullable = false)
+	@Column(name="email",length = 30,nullable = false,unique = true)
 	private String email;
 
-	@Column(name="password",length = 60,nullable = false)
+	@Column(name="password",length = 60,nullable = false,unique = false)
 	private String password;
 
 	@Column(name="role",nullable = false)

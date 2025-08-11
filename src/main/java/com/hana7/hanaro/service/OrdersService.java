@@ -1,9 +1,12 @@
 package com.hana7.hanaro.service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.hana7.hanaro.dto.OrderItemResponseDTO;
 import com.hana7.hanaro.dto.OrderResponseDTO;
+import com.hana7.hanaro.exception.BadRequest.OrderBadRequestException;
 import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +43,12 @@ public class OrdersService {
 
 		List<CartItem> items = cartItemRepository.findByCart(cart);
 
+		items.forEach(item -> {
+			if(item.getItem().getQuantity() <item.getAmount()){
+				throw new OrderBadRequestException();
+			}
+		});
+
 		int totalPrice = items.stream().mapToInt(item -> {
 			int price = item.getItem().getPrice();
 			int amount = item.getAmount();
@@ -48,7 +57,7 @@ public class OrdersService {
 
 		Orders order = Orders.builder()
 			.user(user)
-			.status(ORDERSTATUS.PAID)
+			.orderStatus(ORDERSTATUS.PAID)
 			.totalPrice(totalPrice)
 			.build();
 
@@ -56,19 +65,47 @@ public class OrdersService {
 
 		List<OrderItem> orderItems = items.stream()
 			.map(cartItem -> OrderItem.builder()
-				.order(saved) // 'orders' 필드명을 'order'로 수정
+				.order(saved)
 				.item(cartItem.getItem())
 				.amount(cartItem.getAmount())
 				.build())
 			.collect(Collectors.toList());
 
-		orderItemRepository.saveAll(orderItems); // saveAll을 사용하여 성능 개선
+		orderItemRepository.saveAll(orderItems);
 	}
 
 	public Page<OrderResponseDTO> getOrderHistory(Long userId, Pageable pageable) {
 		User user = userRepository.findById(userId)
 			.orElseThrow(UserNotFoundException::new);
 		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
-		return orders.map(OrderResponseDTO::fromEntity);
+		return orders.map(this::toDto);
+	}
+
+	public Page<OrderResponseDTO> getMyOrders(String email, Pageable pageable){
+		User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
+
+		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
+
+		return orders.map(this::toDto);
+	}
+	private OrderResponseDTO toDto(Orders order){
+		//주문에 담긴 주문 상품 정보 가져옴
+		List<OrderItem> orderItems = orderItemRepository.findByOrder(order);
+		//주문 상품 객체를 DTO로 전환
+		List<OrderItemResponseDTO> itemDtos = orderItems.stream().map(orderItem ->
+			OrderItemResponseDTO.builder()
+				.itemId(orderItem.getId())
+				.itemName(orderItem.getItem().getItemName())
+				.amount(orderItem.getAmount())
+				.totalPrice(orderItem.getAmount()*orderItem.getItem().getPrice())
+				.build()).toList();
+
+		return OrderResponseDTO.builder()
+			.orderId(order.getId())
+			.orderDate(order.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+			.orderStatus(order.getOrderStatus().getDescription())
+			.totalPrice(order.getTotalPrice())
+			.orderItems(itemDtos)
+			.build();
 	}
 }
