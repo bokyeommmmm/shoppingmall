@@ -1,2 +1,15 @@
 insert into User(userName, email, password)
-values ('sub0', 'sample@gmail.com', '$2a$10$DG261y/zDkAJw/.6gHExcuBWTLc/MkQUypiUkygdp5LWkEZ7YLgS.');
+values ('관리자', 'hanaro', '$2a$10$z.5rnfu2KqpzOJPU0LHh4endzgFBwvmxriuSEs.nxFyt.LgPUHVA.'),
+       ('김보겸','kbkyeom@naver.com','$2a$10$..aINRWy6y0HsNNnIKOq9e6PcOScaWS1jzHzHUOZdjUIIXhPZj8q.');
+
+INSERT INTO Item (`price`, `quantity`, `itemName`)
+VALUES ('1000', '10', '소주'),
+       ('2000', '5', '맥주');
+
+
+INSERT INTO Cart (`user`)
+VALUES ('1');
+
+INSERT INTO CartItem (`cart`, `item`, `amount`)
+VALUES ('1', '1', 2),
+       ('1', '2', 2);

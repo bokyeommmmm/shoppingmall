@@ -39,7 +39,7 @@ public class OrdersController {
 		return ResponseEntity.ok(orderHistory);
 	}
 
-	@GetMapping("")
+	@GetMapping("/orders/me")
 	public ResponseEntity<Page<OrderResponseDTO>> getMyOrders(
 		@ParameterObject @PageableDefault(size=10,page=0) Pageable pageable,
 			Authentication authentication){

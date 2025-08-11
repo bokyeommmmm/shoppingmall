@@ -19,14 +19,14 @@ import com.hana7.hanaro.service.CartService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/api/carts")
 @RequiredArgsConstructor
 public class CartController {
 	private final CartService cartService;
 
 	@PostMapping("")
-	public ResponseEntity<?> addCartItem(@RequestBody CartRequestDTO cartRequestDTO) {
-		cartService.addItemToCart(cartRequestDTO);
+	public ResponseEntity<?> addCartItem(@RequestBody CartRequestDTO cartRequestDTO ,Authentication authentication) {
+		cartService.addItemToCart(cartRequestDTO,authentication.getName());
 		return ResponseEntity.ok().build();
 	}
 

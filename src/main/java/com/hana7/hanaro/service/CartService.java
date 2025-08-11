@@ -3,10 +3,13 @@ package com.hana7.hanaro.service;
 import com.hana7.hanaro.dto.CartItemResponseDTO;
 import com.hana7.hanaro.dto.CartResponseDTO;
 import com.hana7.hanaro.dto.ItemDetailResponseDTO;
+import com.hana7.hanaro.exception.BadRequest.CartInsertBadRequestException;
+import com.hana7.hanaro.exception.BadRequest.CartItemInsertBadRequestException;
 import com.hana7.hanaro.exception.NotFound.CartItemNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,32 +39,50 @@ public class CartService {
 
 	private final CartItemRepository cartItemRepository;
 
-	public void addItemToCart(CartRequestDTO cartRequestDTO) {
-
-		User user = userRepository.findById(cartRequestDTO.getUserId()).orElseThrow(UserNotFoundException::new);
+	// 장바구니 담기
+	public void addItemToCart(CartRequestDTO cartRequestDTO, String email) {
+		// user의 Cart가 있는지 확인하기
+		User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
 
 		Cart cart = cartRepository.findByUser(user).orElse(null);
 
-		if(cart == null) { //user 가 cart 없다면 만들어주기
+		if (cart == null) { // user가 cart를 가지고 있지 않다면 만들어주기
 			cart = Cart.builder()
 				.user(user)
 				.build();
 			try {
-				cartRepository.save(cart);
+				cart = cartRepository.save(cart);
 			} catch (Exception e) {
-				throw new CartBadRequestException();
+				throw new CartInsertBadRequestException();
 			}
 		}
-
-		//stream 인에서 사용할 final 객체 !~~!!!
+		// stream 안에서 사용할 final 객체
 		Cart finalCart = cart;
+		List<CartItem> items = cartItemRepository.findByCart(finalCart);
 
+		// DTO -> Entity
 		List<CartItem> cartItems = cartRequestDTO.getCartItems().stream()
 			.map((cartItem) -> {
+				if(!items.isEmpty()){
+					CartItem first = items.stream()
+						.filter(item -> Objects.equals(item.getItem().getId(), cartItem.getItemId()))
+						.findFirst().orElse(null);
+
+					if(first != null){
+						CartItem updated = first.toBuilder().amount(first.getAmount() + cartItem.getAmount()).build();
+						cartItemRepository.save(updated);
+						return updated;
+					}
+				}
 				Item item = itemRepository.findById(cartItem.getItemId()).orElseThrow(ItemNotFoundException::new);
 				return cartItem.toEntity(finalCart, item);
 			}).toList();
-		cartItemRepository.saveAll(cartItems);
+
+		try {
+			cartItemRepository.saveAll(cartItems);
+		} catch (Exception e) {
+			throw new CartItemInsertBadRequestException();
+		}
 	}
 
 	public void updateCartItemAmount(Long cartItemId, int amount) {

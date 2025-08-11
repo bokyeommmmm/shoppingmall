@@ -48,10 +48,13 @@ public class ItemService {
 		saveFiles(itemRequestDTO.getImages(),item);
 	}
 	public Page<ItemResponseDTO> findItem(String keyword, Pageable pageable) {
-		Page<Item>items = itemRepository.findByItemNameContainsIgnoreCase(keyword, pageable);
+		Page<Item> items = itemRepository.findByItemNameContainsIgnoreCase(keyword, pageable);
+
+		if (items.isEmpty()) {
+			throw new ItemNotFoundException();
+		}
 
 		return items.map(ItemService::toDto);
-
 	}
 
 	public ItemDetailResponseDTO findItemDetailById(Long id) {

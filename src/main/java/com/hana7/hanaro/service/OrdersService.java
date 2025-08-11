@@ -72,6 +72,9 @@ public class OrdersService {
 			.collect(Collectors.toList());
 
 		orderItemRepository.saveAll(orderItems);
+
+		// 주문이 완료되었으므로 장바구니의 상품들을 비웁니다.
+		cartItemRepository.deleteAll(items);
 	}
 
 	public Page<OrderResponseDTO> getOrderHistory(Long userId, Pageable pageable) {
