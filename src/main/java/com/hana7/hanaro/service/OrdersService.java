@@ -1,7 +1,12 @@
 package com.hana7.hanaro.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.hana7.hanaro.dto.OrderResponseDTO;
+import com.hana7.hanaro.exception.NotFound.UserNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,17 +25,17 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor //파이널에선 항상 .
-@Transactional
+@Transactional(readOnly = true)
 public class OrdersService {
 	private final OrdersRepository ordersRepository;
 	private final UserRepository userRepository;
 	private final CartItemRepository cartItemRepository;
 	private final OrderItemRepository orderItemRepository;
 
-	public void makeOrders(Long userId){
-		User user = userRepository.findById(userId).orElse(null);
-		// if(user == null){}
-		assert user != null;
+	@Transactional
+	public void makeOrders(Long userId) {
+		User user = userRepository.findById(userId)
+			.orElseThrow(UserNotFoundException::new);
 		Cart cart = user.getCart();
 
 		List<CartItem> items = cartItemRepository.findByCart(cart);
@@ -49,13 +54,21 @@ public class OrdersService {
 
 		Orders saved = ordersRepository.save(order);
 
-		items.forEach(cartItem -> {
-			OrderItem orderItem = OrderItem.builder()
-				.orders(saved)
+		List<OrderItem> orderItems = items.stream()
+			.map(cartItem -> OrderItem.builder()
+				.order(saved) // 'orders' 필드명을 'order'로 수정
 				.item(cartItem.getItem())
 				.amount(cartItem.getAmount())
-				.build();
-			orderItemRepository.save(orderItem);
-		});
+				.build())
+			.collect(Collectors.toList());
+
+		orderItemRepository.saveAll(orderItems); // saveAll을 사용하여 성능 개선
+	}
+
+	public Page<OrderResponseDTO> getOrderHistory(Long userId, Pageable pageable) {
+		User user = userRepository.findById(userId)
+			.orElseThrow(UserNotFoundException::new);
+		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
+		return orders.map(OrderResponseDTO::fromEntity);
 	}
 }

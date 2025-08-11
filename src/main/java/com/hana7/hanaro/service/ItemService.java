@@ -66,7 +66,7 @@ public class ItemService {
 	}
 	public void deleteItem (Long itemId) {
 		if(!itemRepository.existsById(itemId)) {
-			throw new UserNotFoundException();
+			throw new ItemNotFoundException();
 		}
 		try {
 			itemRepository.deleteById(itemId);

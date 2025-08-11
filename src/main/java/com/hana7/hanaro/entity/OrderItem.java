@@ -29,11 +29,11 @@ public class OrderItem extends BaseEntity{
 	private Long id;
 
 	@ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn( name = "orders", foreignKey = @ForeignKey(name = "fk_CartItem_Orders"))
-	private Orders orders;
+	@JoinColumn( name = "order_id", foreignKey = @ForeignKey(name = "fk_OrderItem_Orders"))
+	private Orders order;
 
 	@ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn( name = "item", foreignKey = @ForeignKey(name = "fk_OrdersItem_Item"))
+	@JoinColumn( name = "item_id", foreignKey = @ForeignKey(name = "fk_OrderItem_Item"))
 	private Item item;
 
 	@Column(nullable = false,name="amount")

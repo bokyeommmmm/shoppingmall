@@ -4,6 +4,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import com.hana7.hanaro.enums.ORDERSTATUS;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,6 +16,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,7 +37,7 @@ public class Orders extends BaseEntity{
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user", foreignKey = @ForeignKey(name = "fk_Cart_User"))
+	@JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_Orders_User"))
 	private User user;
 
 	@Column(name = "status",nullable = false)
@@ -44,4 +48,7 @@ public class Orders extends BaseEntity{
 	@Column(name = "totalPrice", nullable = false)
 	@ColumnDefault("0")
 	private int totalPrice;
+
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderItem> orderItems = new ArrayList<>();
 }

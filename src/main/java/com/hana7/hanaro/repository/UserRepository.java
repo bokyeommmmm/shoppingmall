@@ -1,9 +1,10 @@
 package com.hana7.hanaro.repository;
 
+import com.hana7.hanaro.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hana7.hanaro.entity.User;
+import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User,Long> ,UserCustomRepository{
-
+public interface UserRepository extends JpaRepository<User, Long>, UserCustomRepository{
+	Optional<User> findByEmail(String username);
 }
