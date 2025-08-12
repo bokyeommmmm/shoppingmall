@@ -249,8 +249,8 @@ public class OrdersService {
 		return jobLauncher.run(statJob, jobParameters).getStatus();
 	}
 
-		// @Scheduled(cron = "0/15 * * * * *")
-	@Scheduled(cron = "59 59 23 * * *")
+		@Scheduled(cron = "0/15 * * * * *")
+	// @Scheduled(cron = "59 59 23 * * *")
 	public void batchStatistics() throws Exception {
 		runStatBatch();
 	}

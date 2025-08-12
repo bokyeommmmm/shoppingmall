@@ -28,7 +28,7 @@ public class CartController {
 	private final CartService cartService;
 
 	@PreAuthorize("hasRole('USER')")
-	@Operation(summary = "장바구니에 어아탬 추가")
+	@Operation(summary = "장바구니에 아이템 추가")
 	@PostMapping("")
 	public ResponseEntity<?> addCartItem(@RequestBody CartRequestDTO cartRequestDTO ,Authentication authentication) {
 		cartService.addItemToCart(cartRequestDTO,authentication.getName());

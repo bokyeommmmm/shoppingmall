@@ -442,3 +442,37 @@
 2025-08-12 13:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
 2025-08-12 13:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
 2025-08-12 13:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 13:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 13:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:34:59 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:34:59 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:39:59 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:39:59 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 14:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 14:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
