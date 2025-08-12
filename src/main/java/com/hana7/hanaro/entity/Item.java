@@ -46,6 +46,22 @@ public class Item extends BaseEntity {
 	@ToString.Exclude //tostring loop 방지.
 	private List<ItemImage> images = new ArrayList<>();
 
+	@OneToMany(
+		mappedBy = "item",
+		cascade = CascadeType.ALL
+	)
+	@Builder.Default
+	@ToString.Exclude
+	private List<CartItem> cartItems = new ArrayList<>();
+
+	@OneToMany(
+		mappedBy = "item",
+		cascade = CascadeType.ALL
+	)
+	@Builder.Default
+	@ToString.Exclude
+	private List<OrderItem> orderItems = new ArrayList<>();
+
 	public  List<ItemImage> getImages() {
 		if(images == null){
 			images = new ArrayList<>();

@@ -38,3 +38,7 @@
 2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 시작 - itemId=2
 2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 종료 - itemId=2, imageCount=2
 2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [getItemDetail] 종료 - itemId=2, imageCount=2
+2025-08-12 16:00:49 [http-nio-8080-exec-1] INFO  c.h.hanaro.controller.ItemController - [getItemDetail] 시작 - itemId=4
+2025-08-12 16:00:49 [http-nio-8080-exec-1] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 시작 - itemId=4
+2025-08-12 16:00:49 [http-nio-8080-exec-1] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 종료 - itemId=4, imageCount=0
+2025-08-12 16:00:49 [http-nio-8080-exec-1] INFO  c.h.hanaro.controller.ItemController - [getItemDetail] 종료 - itemId=4, imageCount=0

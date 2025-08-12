@@ -40,7 +40,8 @@ public class Orders extends BaseEntity{
 
 	@OneToMany(
 		mappedBy = "order",
-		cascade = CascadeType.ALL
+		cascade = CascadeType.ALL,
+		orphanRemoval = true
 	)
 	@Builder.Default
 	@ToString.Exclude
