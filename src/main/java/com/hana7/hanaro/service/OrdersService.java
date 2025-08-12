@@ -43,7 +43,6 @@ import lombok.extern.log4j.Log4j2;
 
 @Service
 @RequiredArgsConstructor //파이널에선 항상 .
-@Transactional
 @Log4j2
 public class OrdersService {
 	private final OrdersRepository ordersRepository;
@@ -54,6 +53,7 @@ public class OrdersService {
 	private final ItemRepository itemRepository;
 	private final JobLauncher jobLauncher;
 	private final Job csvJob;
+	private final Job statJob;
 
 	@Transactional
 	public void makeOrders(Long userId) {
@@ -127,6 +127,7 @@ public class OrdersService {
 		log.info("[makeOrders] 종료 - orderId={}", saved.getId());
 	}
 
+	@Transactional
 	public Page<OrderResponseDTO> getOrderHistory(Long userId, Pageable pageable) {
 		log.info("[getOrderHistory] 시작 - userId={}", userId);
 		User user = userRepository.findById(userId)
@@ -140,6 +141,7 @@ public class OrdersService {
 		return orders.map(this::toDto);
 	}
 
+	@Transactional
 	public Page<OrderResponseDTO> getMyOrders(String email, Pageable pageable){
 		log.info("[getMyOrders] 시작 - email={}", email);
 		User user = userRepository.findByEmail(email)
@@ -153,6 +155,7 @@ public class OrdersService {
 		return orders.map(this::toDto);
 	}
 
+	@Transactional
 	public Page<OrderResponseDTO> getOrdersByDate(String start, String end, Pageable pageable){
 		log.info("[getOrdersByDate] 시작 - start={}, end={}", start, end);
 		LocalDateTime startDateTime = LocalDate.parse(start, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay();
@@ -169,6 +172,7 @@ public class OrdersService {
 		return orders.map(this::toDto);
 	}
 
+	@Transactional
 	public Page<OrderResponseDTO> getOrdersByUser(String userName, Pageable pageable){
 		log.info("[getOrdersByUser] 시작 - userName={}", userName);
 		User user = userRepository.findByUserName(userName)
@@ -236,5 +240,18 @@ public class OrdersService {
 			.totalPrice(order.getTotalPrice())
 			.orderItems(itemDtos)
 			.build();
+	}
+	public BatchStatus runStatBatch() throws Exception {
+		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
+			.addString("saledt", LocalDate.now().toString())
+			.toJobParameters();
+
+		return jobLauncher.run(statJob, jobParameters).getStatus();
+	}
+
+		// @Scheduled(cron = "0/15 * * * * *")
+	@Scheduled(cron = "59 59 23 * * *")
+	public void batchStatistics() throws Exception {
+		runStatBatch();
 	}
 }

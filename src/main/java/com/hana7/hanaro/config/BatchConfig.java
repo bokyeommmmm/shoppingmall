@@ -36,31 +36,28 @@ public class BatchConfig {
 		return new StepBuilder("csvStep", jobRepository)
 			.<Orders, Orders>chunk(5, transactionManager)
 			.reader(orderReader()) // StepScope로 CSV 경로 받음
-			.writer(memoWriter(ordersRepository))
+			.writer(orderWriter(ordersRepository))
 			.build();
 	}
 
 	@Bean @StepScope
 	protected FlatFileItemReader<Orders> orderReader() {
 		return new FlatFileItemReaderBuilder<Orders>()
-			.name("memoReader")
-			.resource(new ClassPathResource("memos.csv"))
+			.name("orderReader")
+			.resource(new ClassPathResource("orders.csv"))
 			.linesToSkip(1)
 			.delimited()
-			.names("memoText", "state")
+			.names("totalPrice", "state")
 			.fieldSetMapper(new BeanWrapperFieldSetMapper<>() {{
 				setTargetType(Orders.class);
 			}}).build();
 	}
 
 	@Bean
-	public RepositoryItemWriter<Orders> memoWriter(CrudRepository<Orders, Long> repository) {
+	public RepositoryItemWriter<Orders> orderWriter(CrudRepository<Orders, Long> repository) {
 		return new RepositoryItemWriterBuilder<Orders>()
 			.repository(repository)
 			.methodName("save")
 			.build();
 	}
-
-
-
 }
