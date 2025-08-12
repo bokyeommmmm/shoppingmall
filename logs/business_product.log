@@ -10,3 +10,31 @@
 2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 종료 - itemId=3
 2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [insertItem] 종료 - itemId=3
 2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [insertItem] 종료 - name=string2
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.h.hanaro.controller.ItemController - [updateItem] 시작 - itemId=2, newName=string, newPrice=1, newQty=1, images=1
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [updateItem] 시작 - itemId=2
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [modifyItem] 시작 - itemId=2, newName=string, newPrice=1, newQty=1, newImages=1
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 시작 - itemId=2, files=1
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 시도 - org='맥주.jpeg', save='42c07514-aaa5-4b86-8a9b-1eb4197307b9_맥주.jpeg', path='src/main/resources/static/upload/2025/08/12/42c07514-aaa5-4b86-8a9b-1eb4197307b9_맥주.jpeg'
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 완료 - 42c07514-aaa5-4b86-8a9b-1eb4197307b9_맥주.jpeg
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 이미지 엔티티 저장 완료 - count=1
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 아이템-이미지 연결 저장 완료 - itemId=2, totalImages=1
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 종료 - itemId=2
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [modifyItem] 종료 - itemId=2
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.hana7.hanaro.service.ItemService - [updateItem] 아이템 업데이트 완료 - itemId=2
+2025-08-12 15:25:18 [http-nio-8080-exec-7] INFO  c.h.hanaro.controller.ItemController - [updateItem] 종료 - itemId=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.h.hanaro.controller.ItemController - [updateItem] 시작 - itemId=2, newName=string, newPrice=1, newQty=1, images=1
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [updateItem] 시작 - itemId=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [modifyItem] 시작 - itemId=2, newName=string, newPrice=1, newQty=1, newImages=1
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 시작 - itemId=2, files=1
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 시도 - org='맥주.jpeg', save='909b067f-0a68-46a6-8f3f-68c69aff8408_맥주.jpeg', path='src/main/resources/static/upload/2025/08/12/909b067f-0a68-46a6-8f3f-68c69aff8408_맥주.jpeg'
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 완료 - 909b067f-0a68-46a6-8f3f-68c69aff8408_맥주.jpeg
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 이미지 엔티티 저장 완료 - count=1
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 아이템-이미지 연결 저장 완료 - itemId=2, totalImages=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 종료 - itemId=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [modifyItem] 종료 - itemId=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.hana7.hanaro.service.ItemService - [updateItem] 아이템 업데이트 완료 - itemId=2
+2025-08-12 15:25:19 [http-nio-8080-exec-9] INFO  c.h.hanaro.controller.ItemController - [updateItem] 종료 - itemId=2
+2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [getItemDetail] 시작 - itemId=2
+2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 시작 - itemId=2
+2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [findItemDetailById] 종료 - itemId=2, imageCount=2
+2025-08-12 15:25:31 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [getItemDetail] 종료 - itemId=2, imageCount=2
