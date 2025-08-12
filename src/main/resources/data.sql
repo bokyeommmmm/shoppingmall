@@ -1,6 +1,6 @@
-insert into User(userName, email, password)
-values ('관리자', 'hanaro', '$2a$10$z.5rnfu2KqpzOJPU0LHh4endzgFBwvmxriuSEs.nxFyt.LgPUHVA.'),
-       ('김보겸','kbkyeom@naver.com','$2a$10$..aINRWy6y0HsNNnIKOq9e6PcOScaWS1jzHzHUOZdjUIIXhPZj8q.');
+insert into User(userName, email, password,role)
+values ('관리자', 'hanaro', '$2a$10$z.5rnfu2KqpzOJPU0LHh4endzgFBwvmxriuSEs.nxFyt.LgPUHVA.','ROLE_ADMIN'),
+       ('김보겸','kbkyeom@naver.com','$2a$10$..aINRWy6y0HsNNnIKOq9e6PcOScaWS1jzHzHUOZdjUIIXhPZj8q.','ROLE_USER');
 
 INSERT INTO Item (`price`, `quantity`, `itemName`)
 VALUES ('1000', '10', '소주'),

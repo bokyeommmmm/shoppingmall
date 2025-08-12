@@ -1,0 +1,12 @@
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [insertItem] 시작 - name=string2, price=30, qty=30, images=1
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [insertItem] 시작 - name=string2, price=30, qty=30, images=1
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [insertItem] 아이템 저장 완료 - itemId=3
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 시작 - itemId=3, files=1
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 업로드 디렉토리 생성 - src/main/resources/static/upload/2025/08/12
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 시도 - org='소주2.jpeg', save='97128324-b23e-4e34-a441-0ff8d4d493b3_소주2.jpeg', path='src/main/resources/static/upload/2025/08/12/97128324-b23e-4e34-a441-0ff8d4d493b3_소주2.jpeg'
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 파일 저장 완료 - 97128324-b23e-4e34-a441-0ff8d4d493b3_소주2.jpeg
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 이미지 엔티티 저장 완료 - count=1
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 아이템-이미지 연결 저장 완료 - itemId=3, totalImages=1
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [saveFiles] 종료 - itemId=3
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.hana7.hanaro.service.ItemService - [insertItem] 종료 - itemId=3
+2025-08-12 09:20:11 [http-nio-8080-exec-10] INFO  c.h.hanaro.controller.ItemController - [insertItem] 종료 - name=string2

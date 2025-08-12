@@ -134,3 +134,179 @@
 2025-08-12 09:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
 2025-08-12 09:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
 2025-08-12 09:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.h.h.controller.OrdersController - [makeOrder] 시작 - userId=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 시작 - userId=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 사용자 조회 성공 - userId=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 장바구니 ID=1
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 장바구니 상품 수 = 2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 총 주문 금액 계산 완료 - totalPrice=8000
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 주문 저장 완료 - orderId=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 상품 재고 차감 - itemId=1, 남은재고=8
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 상품 재고 차감 - itemId=2, 남은재고=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 주문 상세 저장 완료 - count=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 장바구니 비움 완료
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.hana7.hanaro.service.OrdersService - [makeOrders] 종료 - orderId=2
+2025-08-12 09:15:54 [http-nio-8080-exec-5] INFO  c.h.h.controller.OrdersController - [makeOrder] 종료 - userId=2
+2025-08-12 09:19:01 [http-nio-8080-exec-8] INFO  c.h.h.controller.OrdersController - [getUserOrders] 시작 - userId=2, page=0, size=10
+2025-08-12 09:19:01 [http-nio-8080-exec-8] INFO  c.hana7.hanaro.service.OrdersService - [getOrderHistory] 시작 - userId=2
+2025-08-12 09:19:01 [http-nio-8080-exec-8] INFO  c.hana7.hanaro.service.OrdersService - [getOrderHistory] 조회된 주문 수 = 1
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 09:55:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:00:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:05:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:10:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:15:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:20:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 1
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:25:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:30:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:35:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:40:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:45:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 시작
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PAID -> PREPARING 진행 중
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] PREPARING -> DELIVERING 진행 중
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] DELIVERING -> DELIVERED 진행 중
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 변경된 행 수 = 0
+2025-08-12 10:50:00 [scheduling-1] INFO  c.hana7.hanaro.service.OrdersService - [updateStateBatch] 종료

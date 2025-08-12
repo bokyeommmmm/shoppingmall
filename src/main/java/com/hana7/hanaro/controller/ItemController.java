@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.repository.ItemRepository;
 import com.hana7.hanaro.service.ItemService;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -41,9 +43,10 @@ public class ItemController {
 	private final ItemRepository itemRepository;
 	private final ItemService itemService;
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Operation(summary = "아이템 추가")
-	public ResponseEntity<?> insertItem(@Validated ItemRequestDTO itemRequestDTO) {
+	public ResponseEntity<?> insertItem(@Valid ItemRequestDTO itemRequestDTO) {
 		log.info("[insertItem] 시작 - name={}, price={}, qty={}, images={}",
 			itemRequestDTO.getItemName(),
 			itemRequestDTO.getPrice(),
@@ -92,11 +95,13 @@ public class ItemController {
 			id, itemDetail.getImageUrls() == null ? 0 : itemDetail.getImageUrls().size());
 		return ResponseEntity.ok(itemDetail);
 	}
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "아이템 상세정보 수정")
 	@PatchMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> updateItem(
 		@PathVariable Long id,
-		@Validated ItemRequestDTO itemRequestDTO) {
+		@Valid ItemRequestDTO itemRequestDTO) {
 
 		log.info("[updateItem] 시작 - itemId={}, newName={}, newPrice={}, newQty={}, images={}",
 			id,
@@ -110,6 +115,8 @@ public class ItemController {
 		log.info("[updateItem] 종료 - itemId={}", id);
 		return ResponseEntity.ok().build();
 	}
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "아이템 삭제")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Boolean> deleteItem(
@@ -123,6 +130,7 @@ public class ItemController {
 		return ResponseEntity.ok().build();
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "아이템 수량 변경")
 	@PatchMapping(value = "{id}/quantity")
 	public ResponseEntity<?> updateItemQuantity(

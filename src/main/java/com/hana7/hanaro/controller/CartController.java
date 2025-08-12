@@ -2,6 +2,7 @@ package com.hana7.hanaro.controller;
 
 import com.hana7.hanaro.dto.CartItemUpdateRequestDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class CartController {
 	private final CartService cartService;
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "장바구니에 어아탬 추가")
 	@PostMapping("")
 	public ResponseEntity<?> addCartItem(@RequestBody CartRequestDTO cartRequestDTO ,Authentication authentication) {
@@ -33,6 +35,7 @@ public class CartController {
 		return ResponseEntity.ok().build();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "장바구니 아이템 수량 업데이트")
 	@PatchMapping("/items/{cartItemId}")
 	public ResponseEntity<?> updateCartItemAmount(@PathVariable Long cartItemId, @RequestBody CartItemUpdateRequestDTO dto) {
@@ -41,6 +44,7 @@ public class CartController {
 	}
 
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "카트에서 아이템 지우기")
 	@DeleteMapping("/items/{cartItemId}")
 	public ResponseEntity<?> deleteCartItem(@PathVariable Long cartItemId) {
@@ -48,6 +52,7 @@ public class CartController {
 		return ResponseEntity.ok().build();
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "카트 조회")
 	@GetMapping("")
 	public ResponseEntity<CartResponseDTO> getCartItems (Authentication authentication){

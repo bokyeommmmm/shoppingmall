@@ -7,6 +7,7 @@ import com.hana7.hanaro.dto.UserLoginRequestDTO;
 import com.hana7.hanaro.dto.UserLoginResponseDTO;
 import com.hana7.hanaro.dto.UserRequestDTO;
 import com.hana7.hanaro.dto.UserResponseDTO;
+import com.hana7.hanaro.exception.BadRequest.BadRequestException;
 import com.hana7.hanaro.exception.NotFound.NotFoundException;
 import com.hana7.hanaro.service.UserService;
 
@@ -25,6 +26,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -46,6 +48,7 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "모든 회원 정보 가져오기")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "모든 회원을 찾았습니다.", content = @Content(mediaType = "application/json")),
@@ -59,14 +62,29 @@ public class UserController {
         return ResponseEntity.ok(userService.getUsers(pageable));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @Tag(name = "회원 검색/삭제")
     @Operation(summary = "검색어로 회원 찾기")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "해당하는 회원을 찾았습니다.", content = @Content(mediaType = "application/json")),
+        @ApiResponse(responseCode = "404",
+            description = "회원을 찾을 수 없습니다.",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = NotFoundException.class)))
+    })
     @GetMapping("/search")
     public ResponseEntity<Page<UserResponseDTO>> searchUsers(@RequestParam String keyword, Pageable pageable) {
         return ResponseEntity.ok(userService.findUserByKeyword(keyword, pageable));
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @Tag(name = "회원 검색/삭제")
     @Operation(summary = "id로 회원 삭제")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "모든 회원을 찾았습니다.", content = @Content(mediaType = "application/json")),
+        @ApiResponse(responseCode = "400",
+            description = "회원 삭제에 실패했습니다.",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = BadRequestException.class)))
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable Long id) throws NotFoundException {
         userService.deleteUserById(id);

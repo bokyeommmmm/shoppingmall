@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import lombok.extern.log4j.Log4j2;
 public class OrdersController {
 	private final OrdersService ordersService;
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "장바구니 아이템 주문")
 	@PostMapping("/users/{userId}/orders")
 	public ResponseEntity<Void> makeOrder(@PathVariable("userId") Long userId) {
@@ -37,6 +39,7 @@ public class OrdersController {
 		return ResponseEntity.ok().build();
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "주문 내역 조회 (관리자)")
 	@GetMapping("/users/{userId}/orders")
 	public ResponseEntity<Page<OrderResponseDTO>> getUserOrders(
@@ -52,6 +55,7 @@ public class OrdersController {
 		return ResponseEntity.ok(orderHistory);
 	}
 
+	@PreAuthorize("hasRole('USER')")
 	@Operation(summary = "내 주문내역 조회(유저)")
 	@GetMapping("/orders/me")
 	public ResponseEntity<Page<OrderResponseDTO>> getMyOrders(
@@ -68,6 +72,7 @@ public class OrdersController {
 		return ResponseEntity.ok(myOrders);
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "날짜로 주문내역 조회 (관리자)")
 	@GetMapping("/date")
 	public ResponseEntity<Page<OrderResponseDTO>> getOrdersByDate(
@@ -84,6 +89,8 @@ public class OrdersController {
 			start, end, orders.getTotalElements());
 		return ResponseEntity.ok(orders);
 	}
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@Operation(summary = "사용자로 주문내역 조회 (관리자)")
 	@GetMapping("/user")
 	public ResponseEntity<Page<OrderResponseDTO>> getOrdersUser(
