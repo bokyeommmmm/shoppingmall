@@ -16,20 +16,24 @@ import com.hana7.hanaro.dto.CartRequestDTO;
 import com.hana7.hanaro.dto.CartResponseDTO;
 import com.hana7.hanaro.service.CartService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/carts")
+@RequestMapping("/carts")
 @RequiredArgsConstructor
 public class CartController {
 	private final CartService cartService;
 
+	@Operation(summary = "장바구니에 어아탬 추가")
 	@PostMapping("")
 	public ResponseEntity<?> addCartItem(@RequestBody CartRequestDTO cartRequestDTO ,Authentication authentication) {
 		cartService.addItemToCart(cartRequestDTO,authentication.getName());
 		return ResponseEntity.ok().build();
 	}
 
+	@Operation(summary = "장바구니 아이템 수량 업데이트")
 	@PatchMapping("/items/{cartItemId}")
 	public ResponseEntity<?> updateCartItemAmount(@PathVariable Long cartItemId, @RequestBody CartItemUpdateRequestDTO dto) {
 		cartService.updateCartItemAmount(cartItemId, dto.getAmount());
@@ -37,12 +41,14 @@ public class CartController {
 	}
 
 
+	@Operation(summary = "카트에서 아이템 지우기")
 	@DeleteMapping("/items/{cartItemId}")
 	public ResponseEntity<?> deleteCartItem(@PathVariable Long cartItemId) {
 		cartService.deleteCartItem(cartItemId);
 		return ResponseEntity.ok().build();
 	}
 
+	@Operation(summary = "카트 조회")
 	@GetMapping("")
 	public ResponseEntity<CartResponseDTO> getCartItems (Authentication authentication){
 		String email = authentication.getName();//로그인을 이메일로 하니까 ~~

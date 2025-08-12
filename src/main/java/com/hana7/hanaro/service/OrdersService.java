@@ -57,14 +57,25 @@ public class OrdersService {
 
 	@Transactional
 	public void makeOrders(Long userId) {
+		log.info("[makeOrders] 시작 - userId={}", userId);
+
 		User user = userRepository.findById(userId)
-			.orElseThrow(UserNotFoundException::new);
+			.orElseThrow(() -> {
+				log.warn("[makeOrders] 사용자 없음 - userId={}", userId);
+				return new UserNotFoundException();
+			});
+		log.info("[makeOrders] 사용자 조회 성공 - userId={}", userId);
+
 		Cart cart = user.getCart();
+		log.info("[makeOrders] 장바구니 ID={}", cart.getId());
 
 		List<CartItem> items = cartItemRepository.findByCart(cart);
+		log.info("[makeOrders] 장바구니 상품 수 = {}", items.size());
 
 		items.forEach(item -> {
-			if(item.getItem().getQuantity() <item.getAmount()){
+			if(item.getItem().getQuantity() < item.getAmount()){
+				log.warn("[makeOrders] 재고 부족 - itemId={}, 재고={}, 요청수량={}",
+					item.getItem().getId(), item.getItem().getQuantity(), item.getAmount());
 				throw new OrderBadRequestException();
 			}
 		});
@@ -74,6 +85,7 @@ public class OrdersService {
 			int amount = item.getAmount();
 			return  price * amount;
 		}).sum();
+		log.info("[makeOrders] 총 주문 금액 계산 완료 - totalPrice={}", totalPrice);
 
 		Orders order = Orders.builder()
 			.user(user)
@@ -82,95 +94,128 @@ public class OrdersService {
 			.build();
 
 		Orders saved = ordersRepository.save(order);
-
-
+		log.info("[makeOrders] 주문 저장 완료 - orderId={}", saved.getId());
 
 		List<OrderItem> orderItems = items.stream()
 			.map(cartItem -> {
-				Item item = itemRepository.findById(cartItem.getItem().getId()).orElseThrow(ItemNotFoundException::new);
-				Item updated = item.toBuilder().quantity(item.getQuantity()-cartItem.getAmount()).build();
+				Item item = itemRepository.findById(cartItem.getItem().getId())
+					.orElseThrow(() -> {
+						log.warn("[makeOrders] 상품 없음 - itemId={}", cartItem.getItem().getId());
+						return new ItemNotFoundException();
+					});
+				Item updated = item.toBuilder()
+					.quantity(item.getQuantity() - cartItem.getAmount())
+					.build();
 				itemRepository.save(updated);
+				log.info("[makeOrders] 상품 재고 차감 - itemId={}, 남은재고={}",
+					item.getId(), updated.getQuantity());
 
 				return OrderItem.builder()
-				.order(saved)
-				.item(cartItem.getItem())
-				.amount(cartItem.getAmount())
-				.build();
+					.order(saved)
+					.item(cartItem.getItem())
+					.amount(cartItem.getAmount())
+					.build();
 			})
 			.collect(Collectors.toList());
 
 		orderItemRepository.saveAll(orderItems);
+		log.info("[makeOrders] 주문 상세 저장 완료 - count={}", orderItems.size());
 
-		// 주문이 완료-> 장바구니의 상품들을 비움
 		cartItemRepository.deleteAll(items);
+		log.info("[makeOrders] 장바구니 비움 완료");
+
+		log.info("[makeOrders] 종료 - orderId={}", saved.getId());
 	}
 
 	public Page<OrderResponseDTO> getOrderHistory(Long userId, Pageable pageable) {
+		log.info("[getOrderHistory] 시작 - userId={}", userId);
 		User user = userRepository.findById(userId)
-			.orElseThrow(UserNotFoundException::new);
+			.orElseThrow(() -> {
+				log.warn("[getOrderHistory] 사용자 없음 - userId={}", userId);
+				return new UserNotFoundException();
+			});
+
 		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
+		log.info("[getOrderHistory] 조회된 주문 수 = {}", orders.getTotalElements());
 		return orders.map(this::toDto);
 	}
 
 	public Page<OrderResponseDTO> getMyOrders(String email, Pageable pageable){
-		User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
+		log.info("[getMyOrders] 시작 - email={}", email);
+		User user = userRepository.findByEmail(email)
+			.orElseThrow(() -> {
+				log.warn("[getMyOrders] 사용자 없음 - email={}", email);
+				return new UserNotFoundException();
+			});
 
 		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
-
+		log.info("[getMyOrders] 조회된 주문 수 = {}", orders.getTotalElements());
 		return orders.map(this::toDto);
 	}
 
-	//주문내역 조회 (관리자 기능)
-
-	// 주문 내역 조회 (검색 - 날짜별)
 	public Page<OrderResponseDTO> getOrdersByDate(String start, String end, Pageable pageable){
+		log.info("[getOrdersByDate] 시작 - start={}, end={}", start, end);
 		LocalDateTime startDateTime = LocalDate.parse(start, DateTimeFormatter.ISO_LOCAL_DATE).atStartOfDay();
 		LocalDateTime endDateTime = LocalDate.parse(end, DateTimeFormatter.ISO_LOCAL_DATE).atTime(23, 59, 59);
 
 		Page<Orders> orders = ordersRepository.findByCreatedAtBetween(startDateTime, endDateTime, pageable);
 
 		if(orders.getTotalElements() == 0){
+			log.warn("[getOrdersByDate] 해당 기간 주문 없음");
 			throw new OrderNotFoundException();
 		}
 
+		log.info("[getOrdersByDate] 조회된 주문 수 = {}", orders.getTotalElements());
 		return orders.map(this::toDto);
 	}
 
-	// 주문 내역 조회 (검색 - 사람별)
 	public Page<OrderResponseDTO> getOrdersByUser(String userName, Pageable pageable){
-		User user = userRepository.findByUserName(userName).orElseThrow(UserNotFoundException::new);
+		log.info("[getOrdersByUser] 시작 - userName={}", userName);
+		User user = userRepository.findByUserName(userName)
+			.orElseThrow(() -> {
+				log.warn("[getOrdersByUser] 사용자 없음 - userName={}", userName);
+				return new UserNotFoundException();
+			});
 		Page<Orders> orders = ordersRepository.findByUser(user, pageable);
 
 		if(orders.getTotalElements() == 0){
+			log.warn("[getOrdersByUser] 해당 사용자 주문 없음");
 			throw new OrderNotFoundException();
 		}
 
+		log.info("[getOrdersByUser] 조회된 주문 수 = {}", orders.getTotalElements());
 		return orders.map(this::toDto);
 	}
 
-
 	public BatchStatus runBatch() throws Exception {
-		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
+		log.info("[runBatch] 시작");
+		JobParameters jobParameters = new JobParametersBuilder()
+			.addLong("time", System.currentTimeMillis())
 			.toJobParameters();
 
-		return jobLauncher.run(csvJob, jobParameters).getStatus();
+		BatchStatus status = jobLauncher.run(csvJob, jobParameters).getStatus();
+		log.info("[runBatch] 종료 - status={}", status);
+		return status;
 	}
 
 	@Scheduled(cron = "0 */5 * * * *")
 	public void updateStateBatch() throws Exception {
+		log.info("[updateStateBatch] 시작");
 		ORDERSTATUS state = ORDERSTATUS.PAID;
 		while (state != ORDERSTATUS.DELIVERED) {
 			LocalDateTime now = LocalDateTime.now();
-			System.out.println("now = " + now);
+			log.info("[updateStateBatch] {} -> {} 진행 중", state, state.getNextState());
 
-			System.out.println(
-				"--> " + state + ", " + state.getNextState() + ": " + now.minusMinutes(state.stateInterval()));
-			long affectedRowCount = ordersCustomRepository.updateStateBatch(state, state.getNextState(), now.minusMinutes(state.stateInterval()));
-			System.out.println(" ==> affectedRowCount = " + affectedRowCount);
+			long affectedRowCount = ordersCustomRepository.updateStateBatch(
+				state, state.getNextState(), now.minusMinutes(state.stateInterval())
+			);
+			log.info("[updateStateBatch] 변경된 행 수 = {}", affectedRowCount);
 
 			state = state.getNextState();
 		}
+		log.info("[updateStateBatch] 종료");
 	}
+
 
 	private OrderResponseDTO toDto(Orders order){
 		//주문에 담긴 주문 상품 정보 가져옴

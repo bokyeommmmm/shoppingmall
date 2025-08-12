@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -52,21 +53,26 @@ public class UserController {
             description = "회원을 찾을 수 없습니다.",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = NotFoundException.class)))
     })
+    @Tag(name = "회원 검색/삭제")
     @GetMapping("")
     public ResponseEntity<Page<UserResponseDTO>> findAll(@ParameterObject @PageableDefault(size = 10, page = 0, sort = "userName") Pageable pageable) throws NotFoundException {
         return ResponseEntity.ok(userService.getUsers(pageable));
     }
 
+    @Tag(name = "회원 검색/삭제")
+    @Operation(summary = "검색어로 회원 찾기")
     @GetMapping("/search")
     public ResponseEntity<Page<UserResponseDTO>> searchUsers(@RequestParam String keyword, Pageable pageable) {
         return ResponseEntity.ok(userService.findUserByKeyword(keyword, pageable));
     }
-
+    @Tag(name = "회원 검색/삭제")
+    @Operation(summary = "id로 회원 삭제")
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteUser(@PathVariable Long id) throws NotFoundException {
         userService.deleteUserById(id);
         return ResponseEntity.ok().build();
     }
+    @Tag(name = "로그인/회원가입")
     @PostMapping("/signIn")
     public ResponseEntity<?> signIn(@Valid @RequestBody UserLoginRequestDTO userLoginRequestDTO){
         try {
@@ -90,6 +96,7 @@ public class UserController {
         }
 
     }
+    @Tag(name = "로그인/회원가입")
     @PostMapping("/signUp")
     public ResponseEntity<?> signUp(@Valid @RequestBody UserRequestDTO userRequestDTO){
         userService.signUp(userRequestDTO);
