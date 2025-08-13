@@ -27,7 +27,7 @@ public class SaleItemStat {
 	@JoinColumn(name = "item_id",
 		foreignKey = @ForeignKey(name = "fk_OrderItem_item",
 			foreignKeyDefinition = """
-					foreign key (item_id) 
+					foreign key (item) 
 					references Item(id)
 					on delete cascade
 				"""))
